@@ -39,7 +39,8 @@ public class Customer implements Serializable {
 	@Column(name = "customer_age")
 	private BigInteger customerAge;
 	
-	@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL, 
+				orphanRemoval = true)
     @JoinColumn(name = "customer_id")  
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Order> orders;
