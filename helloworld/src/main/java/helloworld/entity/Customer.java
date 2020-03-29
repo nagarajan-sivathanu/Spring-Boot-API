@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,9 +39,9 @@ public class Customer implements Serializable {
 	@Column(name = "customer_age")
 	private BigInteger customerAge;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+	@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")  
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Order> orders;
 
 }

@@ -25,12 +25,13 @@ public class Order implements Serializable {
 	@Column(name = "order_id")
 	private BigInteger orderId;
 	
-	@Column(name = "customer_id",insertable = false, updatable = false)
-	private BigInteger customerId;
-	
 	@Column(name = "order_detail")
 	private String orderDetail;
 	
+	@Column(name = "customer_id", insertable = true, updatable = true)
+	private BigInteger customerId;
+	
 	@Column(name = "price_amount")
 	private BigInteger price;
+	
 }
