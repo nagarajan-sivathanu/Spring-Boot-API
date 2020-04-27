@@ -1,5 +1,5 @@
-com\cognizant\taskmanager\service\TaskService.class
-com\cognizant\taskmanager\TaskManager.class
-com\cognizant\taskmanager\controllers\TaskController.class
-com\cognizant\taskmanager\pojo\Task.class
-com\cognizant\taskmanager\dao\TaskDao.class
+com\learn\taskmanager\controllers\TaskController.class
+com\learn\taskmanager\dao\TaskDao.class
+com\learn\taskmanager\pojo\Task.class
+com\learn\taskmanager\service\TaskService.class
+com\learn\taskmanager\TaskManager.class
