@@ -1,0 +1,41 @@
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+server:
+  port: 8088
+  servlet:
+    context-path: /camel
+jms:
+  listenerArguments: ?concurrentConsumers=1&maxConcurrentConsumers=5&asyncConsumer=true
+  queue:
+    inputQueue: INPUT.QUEUE
+    outputQueue: OUTPUT.QUEUE      
+---
+spring:
+  profiles: DEV
+  datasource:
+    url: jdbc:postgresql://localhost:5432/master
+    driverClassName: org.postgresql.Driver
+    platform: postgres
+    username: postgres
+    password: admin
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect    
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+---
+spring:
+  profiles: SIT
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: ERROR

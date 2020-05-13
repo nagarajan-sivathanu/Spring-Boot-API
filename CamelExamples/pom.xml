@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.4.RELEASE</version>
+	</parent>
+	<groupId>com.learn</groupId>
+	<artifactId>CamelExamples</artifactId>
+	<version>release_1.0.0</version>
+	<name>CamelExamples</name>
+	<description>Spring Boot Project Integrated with Apache Camel </description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      	<maven.compiler.source>1.8</maven.compiler.source>
+      	<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-boot-starter</artifactId>
+			<version>2.25.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- PostgreSQL -->
+	    <dependency>
+	        <groupId>org.postgresql</groupId>
+	        <artifactId>postgresql</artifactId>
+	    </dependency>
+	    <!-- SNAKE YML -->
+		<dependency>
+		    <groupId>org.yaml</groupId>
+		    <artifactId>snakeyaml</artifactId>
+		</dependency>
+		<!-- SPRING DATA JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- CAMEL JDBC -->
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-jdbc</artifactId>
+		     <version>2.25.1</version>
+		</dependency>
+		<!-- CAMEL SQL -->
+		<dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-sql</artifactId>
+            <version>2.25.1</version>
+        </dependency>
+		<!-- CAMEL JACKSON -->
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-jackson</artifactId>
+		     <version>2.25.1</version>
+		</dependency>
+		<!-- CAMEL JMS -->
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-jms</artifactId>
+		     <version>2.25.1</version>
+		</dependency>
+		<!-- CAMEL SFTP -->
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-ftp</artifactId>
+		    <version>2.25.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+  </dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
