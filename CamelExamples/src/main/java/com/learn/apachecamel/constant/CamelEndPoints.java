@@ -29,8 +29,12 @@ public class CamelEndPoints {
 	@EndpointInject(uri = "file://E://Shared Folder//TestFolder?fileName=testFileFromWindows.txt")
 	public Endpoint fileOutputEndPoint;
 	
-	@EndpointInject(uri = "sftp:127.0.0.1:2222@root//home//nagarajan//Downloads//input?" + 
-			"fileName=testFileFromWindows.txt&password=229085")
+	
+	@EndpointInject(uri = "sftp:root@127.0.0.1:2222/home/nagarajan/Downloads/input?" + 
+			"fileName=testFileFromWindows.txt&password=****")
 	public Endpoint fileSFTPEndPoint;
 	
+	@EndpointInject(uri = "smtps://smtp.gmail.com:465?" +
+			 "username=emailhostID&password=******&debugMode=true")
+	public Endpoint emailDeliveryEndPoint;
 }

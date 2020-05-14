@@ -10,7 +10,10 @@ jms:
   listenerArguments: ?concurrentConsumers=1&maxConcurrentConsumers=5&asyncConsumer=true
   queue:
     inputQueue: INPUT.QUEUE
-    outputQueue: OUTPUT.QUEUE      
+    outputQueue: OUTPUT.QUEUE
+email:
+  from: emailSender@gmail.com   
+  to: emailRecipient@gmail.com
 ---
 spring:
   profiles: DEV
