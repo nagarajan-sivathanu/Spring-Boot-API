@@ -1,0 +1,28 @@
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+server:
+  port: 8087
+  servlet:
+    context-path: /restdataservice
+---
+spring:
+  profiles: DEV
+  datasource:    url: jdbc:postgresql://localhost:5432/master
+    username: postgres
+    password: admin
+  jpa:    database: POSTGRESQL
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect    
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+---
+spring:
+  profiles: SIT
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: ERROR

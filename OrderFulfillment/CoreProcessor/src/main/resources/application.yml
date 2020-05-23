@@ -1,0 +1,28 @@
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+server:
+  port: 8086
+  servlet:
+    context-path: /orderprocessor
+---
+spring:  profiles: DEV
+  activemq:    broker-url: tcp://localhost:8161
+    user: admin
+    password: admin
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: DEBUG
+---
+spring:
+  profiles: SIT
+  activemq:
+    broker-url: tcp://localhost:8161
+    user: admin
+    password: admin
+logging:
+  level:
+    org.springframework: ERROR
+    com.learn: ERROR
