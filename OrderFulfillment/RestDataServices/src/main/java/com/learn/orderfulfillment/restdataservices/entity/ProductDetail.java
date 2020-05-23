@@ -8,11 +8,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
@@ -29,15 +28,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","updatedTimeStamp","product"})
-@org.hibernate.annotations.GenericGenerator(name="product-primarykey", strategy="foreign",
-parameters={@org.hibernate.annotations.Parameter(name="property", value="product")
-})
 public class ProductDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(generator = "product-primarykey")
 	@Column(name = "PRODUCT_ID")
 	private BigInteger productId;
 	
@@ -59,7 +54,8 @@ public class ProductDetail implements Serializable {
 	Status status;
 	
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@MapsId
+	@JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")
 	Product product;
 	
 }

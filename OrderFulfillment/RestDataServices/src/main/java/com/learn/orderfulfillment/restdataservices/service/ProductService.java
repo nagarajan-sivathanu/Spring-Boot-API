@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.learn.orderfulfillment.restdataservices.dao.ProductDao;
 import com.learn.orderfulfillment.restdataservices.entity.Product;
-import com.learn.orderfulfillment.restdataservices.entity.ProductDetail;
 
 @Service
 @Transactional
