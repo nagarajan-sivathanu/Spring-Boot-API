@@ -34,14 +34,14 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/users")
-	public ResponseEntity<User>  createTask(@RequestBody User user) {
+	public ResponseEntity<User>  createUser(@RequestBody User user) {
 		log.info("Inside UserController --> createUser Method");
 		userService.createUser(user);	
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 	
 	@PutMapping(value="/users")
-	public ResponseEntity<User> updateTask(@RequestBody User user) {
+	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		log.info("Inside UserController --> updateUser Method");
 		userService.updateUser(user);
 		return new ResponseEntity<>(user, HttpStatus.OK);

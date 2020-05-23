@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"updatedTimeStamp"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","updatedTimeStamp"})
 public class Product implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
