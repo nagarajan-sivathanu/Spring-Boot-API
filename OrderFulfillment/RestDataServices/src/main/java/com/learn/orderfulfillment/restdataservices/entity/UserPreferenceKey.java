@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @EqualsAndHashCode
 @NoArgsConstructor
-public class UserPreferenceId implements Serializable{
+public class UserPreferenceKey implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private BigInteger userId;
 	private BigInteger productId;

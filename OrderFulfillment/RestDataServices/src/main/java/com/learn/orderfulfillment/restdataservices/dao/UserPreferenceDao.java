@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.learn.orderfulfillment.restdataservices.entity.UserPreference;
-import com.learn.orderfulfillment.restdataservices.entity.UserPreferenceId;
+import com.learn.orderfulfillment.restdataservices.entity.UserPreferenceKey;
 
 @Repository
-public interface UserPreferenceDao extends JpaRepository<UserPreference, UserPreferenceId> {
+public interface UserPreferenceDao extends JpaRepository<UserPreference, UserPreferenceKey> {
 	public List<UserPreference> findAll();
 	void deleteByUserIdAndProductId(BigInteger userId, BigInteger productId);
 }

@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"updatedTimeStamp"})
-@IdClass(UserPreferenceId.class)
+@IdClass(UserPreferenceKey.class)
 public class UserPreference implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
