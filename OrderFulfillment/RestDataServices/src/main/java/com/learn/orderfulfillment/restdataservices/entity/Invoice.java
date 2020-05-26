@@ -42,24 +42,18 @@ public class Invoice implements Serializable{
 	@Column(name = "INVOICE_NBR")
 	private BigInteger invoiceNbr;
 	
-	@Column(name = "USER_ID")
-	private BigInteger userId;
-	
-	@JoinColumn(name = "USER_ID",nullable = false, insertable = false, updatable = false)
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID",nullable = false)
 	private User user;
 	
 	@Column(name = "INVOICE_BILL")
 	private BigInteger invoiceBillAmount;
 	
-	@Column(name = "INVOICE_STATUS_CD")
-	private String statusCode;
-	
 	@Column(name = "UPDATED_TS")
 	private LocalDateTime updatedTimeStamp;
-	
-	@JoinColumn(name = "INVOICE_STATUS_CD",referencedColumnName = "STATUS_CD",nullable = false, insertable = false, updatable = false)
+		
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "INVOICE_STATUS_CD",referencedColumnName = "STATUS_CD",nullable = false)
 	@Where(clause = "STATUS_CATEGORY=INVOICE")
 	private Status status;
 	
