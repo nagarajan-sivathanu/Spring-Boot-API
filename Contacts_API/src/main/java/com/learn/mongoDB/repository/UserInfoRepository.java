@@ -40,4 +40,11 @@ public interface UserInfoRepository extends MongoRepository<UserInfo, String> {
 	
 	@Query(value = "{'dob.age': {$and: [{$gt: ?0}, {$lt: ?1}]}", fields = "{name: 1,dob: 1, gender: 1}")
 	List<UserInfo> findByAgeBetween(final int ageGT, final int ageLT);
+	
+	@Query("{ $and: [{'gender': ?0},{'location.state': ?1}] }")
+	List<UserInfo> findByGenderAndLocation(final String gender, final String location);
+	
+	@Query("{ $or: [{'name.first': ?0},{'name.last': ?1} ] }")
+	List<UserInfo> findByFirstOrLastName(final String firstName, final String lastName);
+	
 }

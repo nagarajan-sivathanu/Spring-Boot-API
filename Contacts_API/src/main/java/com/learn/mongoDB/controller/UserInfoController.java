@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.learn.mongoDB.pojo.FemaleCount;
 import com.learn.mongoDB.pojo.UserInfo;
 import com.learn.mongoDB.service.UserInfoService;
 
@@ -49,6 +50,32 @@ public class UserInfoController {
 		log.info("Inside UserInfoController --> getUsersByAgeFilter Method");
 		userInfoList = userInfoService.getUsersByAgeFilter(greaterThan,greaterThanEqualTo,lessThan,lessThanEqualTo,equalTo,notEqualTo);
 		return new ResponseEntity<>(userInfoList, HttpStatus.OK);
+	}
+	
+	@GetMapping("filter-by-gender-and_location")
+	public ResponseEntity<List<UserInfo>> getUsersByGenderAndLocationFilter(
+			@RequestParam(value = "gender", required = true) String gender,
+			@RequestParam(value = "location", required = true) String location) {
+		log.info("Inside UserInfoController --> getUsersByGenderAndLocationFilter Method");
+		userInfoList = userInfoService.getUsersByGenderAndLocationFilter(gender,location);
+		return new ResponseEntity<>(userInfoList, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("filter-by-firstname-or_lastname")
+	public ResponseEntity<List<UserInfo>> getUsersByFirstOrLastnameFilter(
+			@RequestParam(value = "first", required = false) String firstName,
+			@RequestParam(value = "last", required = false) String lastName) {
+		log.info("Inside UserInfoController --> getUsersByFirstOrLastnameFilter Method");
+		userInfoList = userInfoService.getUsersByFirstOrLastNameFilter(firstName, lastName);
+		return new ResponseEntity<>(userInfoList, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("location-wise-female-count")
+	public ResponseEntity<List<FemaleCount>> getStateWiseFemaleCount(){
+		log.info("Inside UserInfoController --> getStateWiseFemaleCount Method");
+		return new ResponseEntity<>(userInfoService.getStateWiseFemaleCount(),HttpStatus.OK);
 	}
 	
 }
