@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.mongoDB.pojo.FemaleCount;
+import com.learn.mongoDB.pojo.StateCount;
 import com.learn.mongoDB.pojo.UserInfo;
 import com.learn.mongoDB.service.UserInfoService;
 
@@ -76,6 +77,12 @@ public class UserInfoController {
 	public ResponseEntity<List<FemaleCount>> getStateWiseFemaleCount(){
 		log.info("Inside UserInfoController --> getStateWiseFemaleCount Method");
 		return new ResponseEntity<>(userInfoService.getStateWiseFemaleCount(),HttpStatus.OK);
+	}
+	
+	@GetMapping("location-wise-population")
+	public ResponseEntity<List<StateCount>> getStateWisePopulationCount(){
+		log.info("Inside UserInfoController --> getStateWisePopulationCount Method");
+		return new ResponseEntity<>(userInfoService.getStateWisePopulationCount(),HttpStatus.OK);
 	}
 	
 }

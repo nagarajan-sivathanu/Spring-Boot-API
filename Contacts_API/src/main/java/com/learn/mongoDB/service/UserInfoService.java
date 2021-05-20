@@ -11,13 +11,17 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.AggregationSpELExpression;
+import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.data.mongodb.core.aggregation.MatchOperation;
+import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.aggregation.SortOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import com.learn.mongoDB.pojo.FemaleCount;
+import com.learn.mongoDB.pojo.StateCount;
 import com.learn.mongoDB.pojo.UserInfo;
 import com.learn.mongoDB.repository.UserInfoRepository;
 
@@ -105,5 +109,50 @@ public class UserInfoService {
             = mongoTemplate.aggregate(agg, UserInfo.class, FemaleCount.class);
         return groupResults.getMappedResults();		
 	}
+	
+	public List<StateCount> getStateWisePopulationCount(){
+		log.info("Inside UserInfoService --> getStateWisePopulationCount Method");
+		
+		Fields fields = Fields.fields("location.state","gender");
+		Fields fields2 = Fields.fields("state");
+
+		GroupOperation groupStage = 
+			Aggregation.group(fields).count().as("totalPopulation");
+
+		
+		ProjectionOperation projectStage = 
+			 Aggregation.project()
+						.andExpression("_id.state").as("state")
+						.andExpression("gender").as("gender")
+						.andExpression("totalPopulation").as("totalPopulation")
+						.and(AggregationSpELExpression.expressionOf("cond(gender == 'male', totalPopulation, 0)")).as("maleCount")
+						.and(AggregationSpELExpression.expressionOf("cond(gender == 'female', totalPopulation, 0)")).as("femaleCount");
+		
+		SortOperation sortStage = Aggregation.sort(Sort.by(Direction.ASC, "state"));
+		
+		GroupOperation group2Stage = Aggregation.group(fields2).sum("totalPopulation").as("totalPopulation")
+				.sum("maleCount").as("maleCount")
+				.sum("femaleCount").as("femaleCount")
+				.addToSet("state").as("state");
+				
+		
+		ProjectionOperation project2Stage = Aggregation.project().andExclude("gender");
+		
+		
+		
+		Aggregation agg = Aggregation.newAggregation(
+			groupStage,
+			projectStage,
+			group2Stage,
+			project2Stage,
+			sortStage
+			
+		);
+		//Convert the aggregation result into a List
+        AggregationResults<StateCount> groupResults 
+            = mongoTemplate.aggregate(agg, UserInfo.class, StateCount.class);
+        return groupResults.getMappedResults();	
+	}
+	
 	
 }
