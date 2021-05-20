@@ -134,17 +134,11 @@ public class UserInfoService {
 				.sum("maleCount").as("maleCount")
 				.sum("femaleCount").as("femaleCount")
 				.addToSet("state").as("state");
-				
-		
-		ProjectionOperation project2Stage = Aggregation.project().andExclude("gender");
-		
-		
 		
 		Aggregation agg = Aggregation.newAggregation(
 			groupStage,
 			projectStage,
 			group2Stage,
-			project2Stage,
 			sortStage
 			
 		);
